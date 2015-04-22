@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['francis@wizarddevelopment.com']
   spec.summary       = %q{Deploys rails apps to heroku}
   # spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = 'https://www.wizarddevelopment.com'
+  spec.homepage      = 'https://github.com/wizarddevelopment/wizarddev-heroku'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
