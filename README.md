@@ -19,7 +19,7 @@ Or install it yourself as:
     $ gem install wizarddev-heroku
 
 ## Usage
-From `rake wizarddev:deploy`
+From `rake deploy`
 
 ```
 Deploys the currently checked out revision to Heroku.
@@ -32,8 +32,8 @@ Tasks include:
 
 Uses the ~/.netrc file for authentication per the Heroku toolbelt.
 
-usage: rake wizarddev:deploy TARGET=target_name
-usage: rake wizarddev:deploy:{staging|production}
+usage: rake deploy TARGET=target_name
+usage: rake deploy:{staging|production}
 ```
 
 ## Example app.json
@@ -71,7 +71,7 @@ This is very similar and compatible with Heroku's `app.json`.
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/wizarddev-heroku/fork )
+1. Fork it ( https://github.com/wizarddevelopment/wizarddev-heroku/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
