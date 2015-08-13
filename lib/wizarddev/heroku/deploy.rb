@@ -88,7 +88,7 @@ module Wizarddev
       end
 
       def load_config
-        JSON.parse(File.read('app.json'))
+        YAML.load_file('deploy.yml')
       end
 
       def source_repo
@@ -116,7 +116,6 @@ module Wizarddev
         raise "No configuration for #{target} in app.js" unless c
         c
       end
-
     end
   end
 end

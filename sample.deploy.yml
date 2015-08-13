@@ -1,0 +1,27 @@
+---
+name: Our Cool App
+description: Great app to use all the time.
+website: "https://www.ourcoolapp.com"
+heroku-environments:
+  staging:
+    app-name: "ourcoolapp-staging"
+    tag-name: false
+    force-push: true
+    scripts:
+      - cmd: "rake db:migrate"
+        restart: true
+        remote: true
+      - cmd: "rake coolapp:do_something_on_deploy"
+        remote: true
+  production:
+    app-name: "ourcoolapp-production"
+    force-push: false
+    tag-name: prod
+    scripts:
+      - cmd: "rake db:migrate"
+        restart: true
+        remote: true
+      - cmd: "rake coolapp:do_something_on_deploy"
+        remote: true
+      - cmd: "say 'deploy complete'"
+source-repo: "git@github.com:wizarddevelopment/ourcoolapp.git"

@@ -23,7 +23,7 @@ From `rake deploy`
 
 ```
 Deploys the currently checked out revision to Heroku.
-Reads the project's app.json file to determine tasks for a target.
+Reads the project's deploy.yml file to determine tasks for a target.
 Tasks include:
    Tag the release and pushes it to github
    Deploy the release to Heroku
@@ -36,36 +36,39 @@ usage: rake deploy TARGET=target_name
 usage: rake deploy:{staging|production}
 ```
 
-## Example app.json
+## Example deploy.yml
 
-This is very similar and compatible with Heroku's `app.json`.
+This is very similar to Heroku's `app.json` but as a yml file
 
-```json
-{
-  "name": "Our Cool App",
-  "description": "Great app to use all the time.",
-  "website": "https://www.ourcoolapp.com",
-  "heroku-environments": {
-    "staging": {
-      "app-name": "ourcoolapp-staging",
-      "tag-name": false,
-      "force-push": true,
-      "scripts": [
-        { "cmd": "rake db:migrate", "restart": true }
-      ]
-    },
-    "production": {
-      "app-name": "ourcoolapp-production",
-      "force-push": false,
-      "tag-name": "prod",
-      "scripts": [
-        { "cmd": "rake db:migrate", "restart": true, "remote": true },
-        { "cmd": "say 'deploy complete'"}
-      ]
-    }
-  },
-  "source-repo": "git@github.com:wizarddevelopment/ourcoolapp.git"
-}
+```yml
+---
+name: Our Cool App
+description: Great app to use all the time.
+website: "https://www.ourcoolapp.com"
+heroku-environments:
+  staging:
+    app-name: "ourcoolapp-staging"
+    tag-name: false
+    force-push: true
+    scripts:
+      - cmd: "rake db:migrate"
+        restart: true
+        remote: true
+      - cmd: "rake coolapp:do_something_on_deploy"
+        remote: true
+  production:
+    app-name: "ourcoolapp-production"
+    force-push: false
+    tag-name: prod
+    scripts:
+      - cmd: "rake db:migrate"
+        restart: true
+        remote: true
+      - cmd: "rake coolapp:do_something_on_deploy"
+        remote: true
+      - cmd: "say 'deploy complete'"
+source-repo: "git@github.com:wizarddevelopment/ourcoolapp.git"
+
 ```
 
 
