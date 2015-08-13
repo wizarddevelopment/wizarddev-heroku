@@ -1,0 +1,23 @@
+---
+name: app_name
+description: Great app to use all the time.
+website: deploy_url
+heroku-environments:
+  staging:
+    app-name: "deploy_name-staging"
+    tag-name: false
+    force-push: true
+    scripts:
+      - cmd: rake db:migrate
+        restart: true
+        remote: true
+  production:
+    app-name: "deploy_name-production"
+    force-push: false
+    tag-name: prod
+    scripts:
+      - cmd: rake db:migrate
+        restart: true
+        remote: true
+      - cmd: say 'deploy complete'
+source-repo: "git@github.com:repo_name.com.git"
